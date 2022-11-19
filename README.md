@@ -1,6 +1,6 @@
 # EXAMEN LATAM
 
-## CONCEPTOS GENERALES (8/17)
+## CONCEPTOS GENERALES (12/17)
 
 ### 1) ¿Que se entiende por subsidiaria?
 
@@ -37,11 +37,16 @@ Se entiende por subsidiaria a una empresa que es controlada por una organizació
 
 Las cuentas de costo de bienes vendidos (COGS) se utilizan solo en **Inventory Items** y en **Assembly Items**. Para configurar una cuenta COGS por defencto, se debe seguir los siguientes pasos:
 
-// TODO: Pendiente pasos
+1. Cursor sobre **Setup**
+2. Cursor sobre **Accounting**
+3. Clic en **Accounting Preferences**
+4. Clic en el SubTab de **Items/Transactions**
+5. Revisar el apartado de **Accounts**
+6. Configurar cuenta de costos en la opción de **DEFAULT COGS ACCOUNT**
 
 ### 6) ¿Qué significa que una cuenta se encuentre configurada en Item Accounting Mapping y Global Accounting Mapping, respectivamente?¿Por qué crees que se realiza este tipo de configuración? Indicar cada caso
 
----
+Tanto las cuentas configuradas en **Item Accounting Mapping**, como las configuradas en **Global Accounting Mapping** permiten configurar libros de contabilidad secundarios, esto para contabilizar cuentas diferentes del libro principal. Entonces por que hacer este tipo de configuraciones?. Pues esto recae en que las mencionadas primeramente asignan estas cuentas en base a transacciones en las que el **Item** determina la cuenta en la que se contabiliza la transacción. Por el otro lado la otra es utilizada por transacciones en las que el usuario puede seleccionar manualmente la cuenta en la que se contabiliza la transacción.
 
 ### 7) Que es un rol y cuál es su finalidad
 
@@ -71,7 +76,7 @@ El **Service Item** es un producto que no se vende, sino que se presta un servic
 
 ### 10) Qué tipo de ítem se usará para representar una promoción (Tablet, Teclado y Mouse). Explique por qué
 
----
+Usaría un **Item** de tipo **Kit/Package Item**, esto ya que nos permite agrupar un conjunto de **Items** y además nos permite establecer el precio deseado del **Kit**, independientemente del precio total de cada **Item**, esto permite crear promociones, canastas de regalo, etc.
 
 ### 11) Qué tipos de ítems nos permite utilizar montos negativos
 
@@ -93,11 +98,11 @@ El **Service Item** es un producto que no se vende, sino que se presta un servic
 4. Clic en **Adjust Inventory**
 5. Completar campos obligatorios como:
    - **ADJUSTMENT ACCOUNT:** Cuenta que se usara para registrar el ajuste o actualización del stock
-   - **SUBSIDIARY:** Subsidiaria a la cual pertenece el item que se actualizara a nivel de stock
+   - **SUBSIDIARY:** Subsidiaria a la cual pertenece el **Item** que se actualizara a nivel de stock
    - **DATE:** Fecha en la cual se realizara el ajuste o actualización del stock
 6. En el SubTab de **ADJUSTMENTS** seleccionar el **ITEM** que se desea actualizar
 7. Completar campos obligatorios como:
-   - **LOCATION:** Ubicación del item que se desea actualizar
+   - **LOCATION:** Ubicación del **Item** que se desea actualizar
    - **ADJUST QTY. BY:** Cantidad que se desea actualizar
 8. Clic en **Add** y luego en **Save**
 
