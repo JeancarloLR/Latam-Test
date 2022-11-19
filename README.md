@@ -70,7 +70,7 @@
 
 ---
 
-## SCRIPTS (4.5/10)
+## SCRIPTS (5.5/10)
 
 ### 1) ¿Cuál es la diferencia entre define y require para la declaración de módulos? ¿Qué debo tener en consideración al momento de declarar una librería personalizada en ambos casos?
 
@@ -106,7 +106,96 @@ El modo **Testing** permite que el script se ejecute en modo de prueba, esto par
 
 ### 8) Implementar código el cual permita crear un proveedor, cabe recalcar que la subsidiaria sólo se debe llenar siempre y cuando esté activo el feature Subsidiaries de los 'Enabled Features' de NetSuite'
 
----
+```javascript
+/* 
+Implementar código el cual permita crear un proveedor, cabe recalcar que la subsidiaria 
+sólo se debe llenar siempre y cuando esté activo el feature Subsidiaries de los 
+'Enabled Features' de NetSuite'
+*/
+
+define(["N/record", "N/log", "N/runtime"], function (record, log, runtime) {
+  var LMRY_SCRIPT_NAME = "LMRY - Exercise 1";
+
+  /**
+   * @type {{SUBSIDIARY:boolean}}
+   */
+  var FEATURES = { SUBSIDIARY: false };
+
+  /** - Crea un proveedor con respecto a una subsidiaria
+   * @description Crea un proveedor con respecto a una subsidiaria
+   * @param {string} subsidiaryId - Subsidiaria a la cual se le creará el proveedor
+   * @returns {number} - Retorna el id del proveedor creado
+   */
+  function _createVendor(subsidiaryId) {
+    try {
+      // ! ID = 7 = Argentina => For LatamReady - QA MultiBook (old)
+      if (!subsidiaryId) {
+        throw new Error("No se ha especificado una subsidiaria");
+      }
+      // ! Set Features
+      _setFeatures();
+
+      var objRecord = record.create({
+        type: record.Type.VENDOR,
+        isDynamic: true,
+      });
+
+      var randomAux = Math.floor(Math.random() * 1000);
+
+      objRecord.setValue({
+        fieldId: "entityid",
+        value: "LMRY - Vendor" + randomAux,
+      });
+
+      objRecord.setValue({
+        fieldId: "companyname",
+        value: "LMRY - Vendor" + randomAux,
+      });
+
+      if (FEATURES.SUBSIDIARY) {
+        objRecord.setValue({
+          fieldId: "subsidiary",
+          value: subsidiaryId,
+        });
+      }
+
+      var vendorId = objRecord.save({
+        enableSourcing: true,
+        ignoreMandatoryFields: true,
+      });
+    } catch (error) {
+      log.error("Error in _createVendor", {
+        title: "[ MPRD - _createVendor ]",
+        message: error,
+        relatedScript: LMRY_SCRIPT_NAME,
+      });
+    }
+  }
+
+  /** - Setea el valor de las features
+   * @description Setea el valor de las features
+   * @returns {void} No retorna nada pero guarda datos en la variable global FEATURES
+   */
+  function _setFeatures() {
+    try {
+      var containFeature = false;
+
+      containFeature = runtime.isFeatureInEffect({
+        feature: "SUBSIDIARIES",
+      });
+      if (containFeature == true || containFeature == "T") {
+        FEATURES.SUBSIDIARY = true;
+      }
+    } catch (error) {
+      log.error("Error in _setFeatures", {
+        title: "[ MPRD - _setFeatures ]",
+        message: error,
+        relatedScript: LMRY_SCRIPT_NAME,
+      });
+    }
+  }
+});
+```
 
 ### 9) Implemente una función en el cual ingrese como parámetro el id de una Oportunidad, ahora a partir de esta transacción se deben crear los siguientes récords: Quote (Estimate), Sales Order, Invoice, Customer Payment. La función debe retornar un objeto con todos los ids de las transacciones creadas. (No olvide que una transacción depende de la anterior, por ejemplo el Sales order se crea a partir del Quote, el invoice a partir del sales order y así sucesivamente)
 
@@ -423,7 +512,7 @@ define(["N/search", "N/log"], function (search, log) {
 });
 ```
 
-## FACTURACIÓN ELECTRÓNICA
+## FACTURACIÓN ELECTRÓNICA (0/3)
 
 ### 1) A nivel conceptual, listar las diferencias entre el flujo Own y el flujo Estándar
 
