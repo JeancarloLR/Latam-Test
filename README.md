@@ -1,22 +1,37 @@
 # EXAMEN LATAM
 
-## CONCEPTOS GENERALES (0/17)
+## CONCEPTOS GENERALES (5/17)
 
 ### 1) ¿Que se entiende por subsidiaria?
 
----
+Se entiende por subsidiaria a una empresa que es controlada por una organización central, la cual es la matriz. Estas subsidiarias nacen con el objetivo de expandir los negocios de la organización matriz, estas pueden trabajar en diferentes países o en el mismo país.
 
 ### 2) ¿Cuál es la finalidad de usar los campos de clasificación (Department, Class y Location)?
 
----
+- **Department:** Tienen como finalidad clasificar y realizar un seguimiento de los gastos de la empresa, por ejemplo: gastos de ventas, gastos de administración, gastos de producción, etc. Esto registros pueden ser de ingresos, gastos por departamento, etc. Tambien se pueden realizar en cualquier periodo de tiempo, ya sea mensual, trimestral, semestral, anual, etc.
+
+- **Class:** Tiene como finalidad subdividir los departamentos en si, permitiendo asi la creación de categorias, de tal forma que se puedan realizar seguimiento de cierta información como transacciones de ventas, nuevos clientes, etc. Todo esto es util para seguir de la mejor manera donde se generan los ingresos y gastos.
+
+- **Location:** Tiene como finalidad clasificar mediante determinada ubicación, por ejemplo: manejar gastos en distintos almacenes en diversas locaciones, ademas se pueden asociar empleados a una determinada locación. Esto permite tener un seguimiento mas preciso de los gastos y de los ingresos. Permitiendo principalmente generación de informes y reportes de manera mas precisa.
 
 ### 3) ¿Cómo activar los Ids internos de los campos?
 
----
+1. Cursor sobre **Home** => Imagen de casita
+2. Click en **Set Preferences**
+3. Click en Subtab **General**
+4. Revisar el apartado de **Defaults**
+5. Activar la opción de **SHOW INTERNAL IDS**
 
 ### 4) En donde se configura el formato de fechas, zona horaria e idioma
 
----
+1. Cursor sobre **Home** => _Icono de casita_
+2. Click en Set **Preferences**
+3. Click en Subtab **General**
+4. Revisar el apartado de **Formatting**
+5. Configurar formato de fechas en la opción de **DATE FORMAT**
+6. Revisar el apartado de **Localization**
+7. Configurar zona horaria en la opción de **TIME ZONE**
+8. Configurar idioma en la opción de **LANGUAGE**
 
 ### 5) En donde se puede configurar las cuentas de Costos (Cogs Account)
 
@@ -36,7 +51,7 @@
 
 ### 9) ¿Cuáles son las diferencias entre un ítem de servicio y un ítem de inventario?
 
----
+El **Service Item** es un producto que no se vende, sino que se presta un servicio, estos no son cuantificables, y pueden ser por ejemplo: un servicio de reparación de computadoras, un servicio de reparación de electrodomésticos, etc. A diferencia de los **Inventory Items**, estos si son cuantificables, y se venden y compran, por ejemplo: un producto de limpieza, un producto de aseo, etc.
 
 ### 10) Qué tipo de ítem se usará para representar una promoción (Tablet, Teclado y Mouse). Explique por qué
 
@@ -90,11 +105,11 @@ El modo **Testing** permite que el script se ejecute en modo de prueba, esto par
 
 ### 5) Describe la finalidad de los siguientes scripts Client, User Event, Custom GL PLugin
 
-- **Client Script :** Tiene como finalidad validar datos que se ingresan a nivel de usuario, tambien se puede usar este tipo de script para completar campos o sublistas, cambiar valores en base a otros, envio de aleartas. Usualmente se utilizan y van de la mano con un **Suitelet**.
+- **Client Script:** Tiene como finalidad validar datos que se ingresan a nivel de usuario, tambien se puede usar este tipo de script para completar campos o sublistas, cambiar valores en base a otros, envio de aleartas. Usualmente se utilizan y van de la mano con un **Suitelet**.
 
-- **User Event Script :** Tiene como finalidad realizar validaciones personalizadas de registros, asegurar la integridad de los datos definidos por el usuario, comprobar permisos y restricciones de registros, ademas de realizar sincronización de datos en tiempo real. Estos se ejecutan del lado del servidor y usualmente se utilizan y van de la mano con **Suitelet, Scheduled Script y Portlet**.
+- **User Event Script:** Tiene como finalidad realizar validaciones personalizadas de registros, asegurar la integridad de los datos definidos por el usuario, comprobar permisos y restricciones de registros, ademas de realizar sincronización de datos en tiempo real. Estos se ejecutan del lado del servidor y usualmente se utilizan y van de la mano con **Suitelet, Scheduled Script y Portlet**.
 
-- **Custom GL Plugin :** ----------
+- **Custom GL Plugin:** ----------
 
 ### 6) Si estás utilizando un Suitelet para consumo de web services ¿Qué campos del deployado del script debes configurar y por qué?
 
@@ -390,15 +405,15 @@ define(["N/search", "N/format", "N/log"], function (search, format, log) {
 
 #### Records From Integration SuiteTax - Legacy
 
-- **LatamReady - Legal Ledger :** Este recordar contiene la información del nombre del reporte, a que pais pertenece, adicionalmente contiene el id del script y el deployment que se va a ejecutar para generar el reporte, este script es de tipo MPRD o SCHDL.
-- **LatamReady - Legal Template :** Este record se utiliza para definir el formato de los reportes, caracteristicas como el tipo de extensión del reporte, el tipo codificación, el tipo de formato, el uso o no de un template, etc. Este esta relacionado al **LatamReady - Legal Ledger**.
-- **LatamReady - SuiteTax Rpt Filter :** Este record se utiliza para definir los campos que se mostraran en el Suitelet y que son necesarios para generar el reporte, este record contiene campos como el tipo de campo, el nombre del campo, el label del campo, el tipo de filtro, etc. Además esta relacionado al **LatamReady - Legal Ledger**.
+- **LatamReady - Legal Ledger:** Este recordar contiene la información del nombre del reporte, a que pais pertenece, adicionalmente contiene el id del script y el deployment que se va a ejecutar para generar el reporte, este script es de tipo MPRD o SCHDL.
+- **LatamReady - Legal Template:** Este record se utiliza para definir el formato de los reportes, caracteristicas como el tipo de extensión del reporte, el tipo codificación, el tipo de formato, el uso o no de un template, etc. Este esta relacionado al **LatamReady - Legal Ledger**.
+- **LatamReady - SuiteTax Rpt Filter:** Este record se utiliza para definir los campos que se mostraran en el Suitelet y que son necesarios para generar el reporte, este record contiene campos como el tipo de campo, el nombre del campo, el label del campo, el tipo de filtro, etc. Además esta relacionado al **LatamReady - Legal Ledger**.
 
 #### Common Records
 
-- **Accounting Period :** Este record contiene la información de los periodos contables, contiene información como el nombre del periodo, la fecha de inicio y fin del periodo, el estado del periodo, etc.
-- **Subsidiary :** Este record contiene la información de las subsidiarias, contiene información como el nombre de la subsidiaria, el pais, el estado, etc.
-- **Multi-Book :** Este record contiene la información de los libros contables, contiene información como el nombre del libro, el estado, etc.
+- **Accounting Period:** Este record contiene la información de los periodos contables, contiene información como el nombre del periodo, la fecha de inicio y fin del periodo, el estado del periodo, etc.
+- **Subsidiary:** Este record contiene la información de las subsidiarias, contiene información como el nombre de la subsidiaria, el pais, el estado, etc.
+- **Multi-Book:** Este record contiene la información de los libros contables, contiene información como el nombre del libro, el estado, etc.
 
 ### 2) De la anterior pregunta, implementar el proceso Accounting Context (Redireccionamiento de Cuentas) de reportes
 
