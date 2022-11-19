@@ -1,6 +1,76 @@
 # EXAMEN LATAM
 
-## SCRIPTS
+## CONCEPTOS GENERALES (0/17)
+
+### 1) ¿Que se entiende por subsidiaria?
+
+---
+
+### 2) ¿Cuál es la finalidad de usar los campos de clasificación (Department, Class y Location)?
+
+---
+
+### 3) ¿Cómo activar los Ids internos de los campos?
+
+---
+
+### 4) En donde se configura el formato de fechas, zona horaria e idioma
+
+---
+
+### 5) En donde se puede configurar las cuentas de Costos (Cogs Account)
+
+---
+
+### 6) ¿Qué significa que una cuenta se encuentre configurada en Item Accounting Mapping y Global Accounting Mapping, respectivamente?¿Por qué crees que se realiza este tipo de configuración? Indicar cada caso
+
+---
+
+### 7) Que es un rol y cuál es su finalidad
+
+---
+
+### 8) ¿Es posible crear un rol en donde solo se muestre una sola pestaña? De ser afirmativa la respuesta, explique cómo se realiza dicho proceso
+
+---
+
+### 9) ¿Cuáles son las diferencias entre un ítem de servicio y un ítem de inventario?
+
+---
+
+### 10) Qué tipo de ítem se usará para representar una promoción (Tablet, Teclado y Mouse). Explique por qué
+
+---
+
+### 11) Qué tipos de ítems nos permite utilizar montos negativos
+
+---
+
+### 12) Realizar un diagrama del flujo de venta
+
+---
+
+### 13) Realizar un diagrama del flujo de compras
+
+---
+
+### 14) Se quiere actualizar el stock de un ítem. Cómo podría realizar ese proceso
+
+---
+
+### 15) Se quiere realizar un ajuste de cuentas entre dos subsidiarias, cuál es la transacción que nos permite realizar este procedimiento
+
+---
+
+### 16) Que transacciones implica una devolución de un producto
+
+---
+
+### 17) He creado un nuevo campo, el cual debe estar visible solo para el país México. Indicar cuál es el paso a paso para configurar dicho campo en el proceso Hide&View
+
+---
+
+## SCRIPTS (4.5/10)
 
 ### 1) ¿Cuál es la diferencia entre define y require para la declaración de módulos? ¿Qué debo tener en consideración al momento de declarar una librería personalizada en ambos casos?
 
@@ -12,7 +82,7 @@ El **Script Record** es básicamente la definición de una secuencia de código 
 
 ### 3) El deployado de un script, que se aplica a una transacción, está configurado para la subsidiaria Honeycomb Inc. (Subsidiaria padre). Un usuario que pertenece a la subsidiaria Honeycomb BR (Subsidiaria hija), desea que se ejecute la lógica del script al momento de utilizar una transacción ¿Consideras que el usuario presentará algún problema al visualizar los resultados de la lógica del script?. Indicar el por qué
 
-Si, el usuario presentará problemas al momento de visualizar los resultados de la lógica del script, ya que el script deployment esta configurado para la subsidiaria Honeycomb Inc. (Subsidiaria padre), por lo tanto, el usuario que pertenece a la subsidiaria Honeycomb BR (Subsidiaria hija) no podrá ejecutar la lógica del script.
+---
 
 ### 4) ¿Cuál es la finalidad de que un script esté configurado en modo 'Testing'?
 
@@ -24,15 +94,23 @@ El modo **Testing** permite que el script se ejecute en modo de prueba, esto par
 
 - **User Event Script :** Tiene como finalidad realizar validaciones personalizadas de registros, asegurar la integridad de los datos definidos por el usuario, comprobar permisos y restricciones de registros, ademas de realizar sincronización de datos en tiempo real. Estos se ejecutan del lado del servidor y usualmente se utilizan y van de la mano con **Suitelet, Scheduled Script y Portlet**.
 
-- **Custom GL Plugin :** DSD
+- **Custom GL Plugin :** ----------
 
 ### 6) Si estás utilizando un Suitelet para consumo de web services ¿Qué campos del deployado del script debes configurar y por qué?
 
+---
+
 ### 7) Quieres utilizar el módulo N/file desde un script Cliente, para guardar un archivo, pero dicho módulo no se encuentra disponible para ese tipo de script. ¿Cuál sería la solución que tendrías para poder realizar dicho proceso desde el mismo Client Script?
+
+---
 
 ### 8) Implementar código el cual permita crear un proveedor, cabe recalcar que la subsidiaria sólo se debe llenar siempre y cuando esté activo el feature Subsidiaries de los 'Enabled Features' de NetSuite'
 
+---
+
 ### 9) Implemente una función en el cual ingrese como parámetro el id de una Oportunidad, ahora a partir de esta transacción se deben crear los siguientes récords: Quote (Estimate), Sales Order, Invoice, Customer Payment. La función debe retornar un objeto con todos los ids de las transacciones creadas. (No olvide que una transacción depende de la anterior, por ejemplo el Sales order se crea a partir del Quote, el invoice a partir del sales order y así sucesivamente)
+
+---
 
 ### 10) Realizar una búsqueda de las transacciones creadas en los últimos 5 días (las transacciones a considerar son: Invoice, Vendor Bill, Credit memo, Vendor Credit). Las transacciones deben estar agrupadas por subsidiaria
 
@@ -217,7 +295,7 @@ define(["N/search", "N/format", "N/log"], function (search, format, log) {
 });
 ```
 
-## REPORTES
+## REPORTES (6/7)
 
 ### 1) Cuales son los Récords que usa todo Report Generator de cualquier reporte de cualquier país; y cuál es el uso de cada uno de ellos?
 
@@ -246,6 +324,8 @@ Para considerar **'Period End Journal'** dentro de un reporte se deben considera
 Para considerar el proceso de **'Special Period'** dentro de un reporte se deben considerar algunos Features como los son el **SPECIAL ACCOUNTING PERIOD**, el cual es un Feature que se utiliza para indicar que el periodo de cierre es diferente al periodo de reporte, también el Feature **MULTIPLECALENDARS** este pasa como un filtro adicional, en caso este activo se buscara que coincida con el respectivo calendario, adicionalmente se debe configurar el record **LatamReady - Special Accounting Period**, donde se especifican el periodo, inicio y fin del periodo, año y calendario fiscal.
 
 ### 5) Implementar una búsqueda por script del Catálogo de Cuenta de cualquier país. Columnas a considerar : Nro (Correlativo), Número de Cuenta, Nombre
+
+---
 
 ### 6) Una búsqueda de transacción (Invoice) puede traer hasta 1.000.000 de registros por mes, al momento de intentar realizar la búsqueda para recuperar la información, esta se cae por 'tiempo de ejecución excedido'. Cual seria su solución para corregir este problema (Implementar código)
 
@@ -342,3 +422,21 @@ define(["N/search", "N/log"], function (search, log) {
   }
 });
 ```
+
+## FACTURACIÓN ELECTRÓNICA
+
+### 1) A nivel conceptual, listar las diferencias entre el flujo Own y el flujo Estándar
+
+---
+
+### 2) Diferencias de los campos que tenga un ambiente Legacy y SuiteTax(Subsidiarias y Transacciones)
+
+---
+
+### 3) Resolver la siguiente pregunta
+
+![Exercise](./src/utils/electronic-billing-exercise.png)
+
+Link del servicio: <https://docs.google.com/presentation/d/1e-tXkuudljOOHjJ8n2zlJKscKRnc-kjOZG-CFd6hJ8E/edit#slide=id.g560ae87161_0_0>
+
+---
