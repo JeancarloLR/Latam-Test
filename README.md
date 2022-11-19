@@ -35,7 +35,7 @@ Se entiende por subsidiaria a una empresa que es controlada por una organizació
 
 ### 5) En donde se puede configurar las cuentas de Costos (Cogs Account)
 
-Las cuentas de costo de bienes vendidos (COGS) se utilizan solo en **Inventory Items** y en **Assembly Items**. Para configurar una cuenta COGS por defencto, se debe seguir los siguientes pasos:
+Las cuentas de costo de bienes vendidos (COGS) se utilizan solo en **Inventory Items** y en **Assembly Items**. Para configurar una cuenta COGS por defecto, se debe seguir los siguientes pasos:
 
 1. Cursor sobre **Setup**
 2. Cursor sobre **Accounting**
@@ -128,7 +128,7 @@ Usaría un **Item** de tipo **Kit/Package Item**, esto ya que nos permite agrupa
 9. Para ejecutar el **Schedule Script** basta con darle a editar y luego dar clic en **Save and Execute**
 10. Finalmente cuando el progreso de ejecución del **Schedule Script** sea 100%, podrá observar que el campo en cuestión ya es visible y solo para el país México
 
-## SCRIPTS (5.5/11)
+## SCRIPTS (6/11)
 
 ### 1) ¿Cuál es la diferencia entre define y require para la declaración de módulos? ¿Qué debo tener en consideración al momento de declarar una librería personalizada en ambos casos?
 
@@ -152,7 +152,11 @@ El modo **Testing** permite que el script se ejecute en modo de prueba, esto par
 
 - **User Event Script:** Tiene como finalidad realizar validaciones personalizadas de registros, asegurar la integridad de los datos definidos por el usuario, comprobar permisos y restricciones de registros, ademas de realizar sincronización de datos en tiempo real. Estos se ejecutan del lado del servidor y usualmente se utilizan y van de la mano con **Suitelet, Scheduled Script y Portlet**.
 
-- **Custom GL Plugin:** ----------
+- **Custom GL Plugin:** Tiene como finalidad ser utilizado en **GL Impact**, también se usa facturación electrónica, este script guarda una lógica, que en caso sean para **GL Impact** puede crear líneas personalizadas, dentro de su configuración al momento de crear este tipo de script se consideran campos como:
+  - **TRANSACTION TYPE:** Tipo de transacción en donde se aplicara el script
+  - **SUBSIDIARY:** Subsidiaria a la cual se le aplicara el script
+  - **EFECTIVE DATE:** Fecha inicial para el intervalo de fecha en el cual el script será utilizado
+  - **END DATE:** Fecha final para el intervalo de fecha en el cual el script será utilizado
 
 ### 6) Si estás utilizando un Suitelet para consumo de web services ¿Qué campos del deployado del script debes configurar y por qué?
 
@@ -503,6 +507,8 @@ define(["N/search", "N/log"], function (search, log) {
   function _getSubsidiariesByCountry(countryCode) {
     try {
       // countryCode = AR = Argentina => For LatamReady - QA MultiBook (old)
+
+      // countryCode = "AR";
       if (!countryCode) {
         throw new Error("No se ha especificado el código del país");
       }
@@ -673,6 +679,102 @@ define(["N/search", "N/log"], function (search, log) {
     } catch (error) {
       log.error("Error in _completeCorrelative", {
         title: "[ SCHDL - _completeCorrelative ]",
+        message: error,
+        relatedScript: LMRY_SCRIPT_NAME,
+      });
+    }
+  }
+});
+```
+
+### 6) Una búsqueda de transacción (Invoice) puede traer hasta 1.000.000 de registros por mes, al momento de intentar realizar la búsqueda para recuperar la información, esta se cae por 'tiempo de ejecución excedido'”'. Cual seria su solución para corregir este problema (Implementar código)
+
+```javascript
+/* 
+Una búsqueda de transacción (Invoice) puede traer hasta 1.000.000 de registros por mes, 
+al momento de intentar realizar la búsqueda para recuperar la información, 
+esta se cae por 'tiempo de ejecución excedido'. 
+Cual seria su solución para corregir este problema (Implementar código).
+*/
+
+/* La solución esta en hacer un bucle que vaya de 1000 en 1000, y 
+que vaya guardando los resultados en un array, esto para evitar
+la iteración de 1.000.000 de lineas que provoca que caiga el search, y luego retornar ese array,
+en casos donde se usen SCHDL o MPRC se pueden hacer rellamados al script
+*/
+
+define(["N/search", "N/log"], function (search, log) {
+  var LMRY_SCRIPT_NAME = "LMRY - Exercise 3";
+
+  /**
+   * @type {Array<{tranId:string,tranDate:string}>}
+   */
+  var rta = [];
+
+  /** - Obtiene todos los registros de Invoice
+   * @description Obtiene todos los registros de Invoice
+   * @returns {void} - No retorna nada pero guarda datos en la variable rta
+   */
+  function _getInvoices() {
+    try {
+      var DbolStop = false;
+      var minInterval = 0;
+      var maxInterval = 1000;
+
+      var IT_Filters = [
+        search.createFilter({
+          name: "type",
+          operator: search.Operator.ANYOF,
+          values: ["CustInvc"],
+        }),
+      ];
+
+      var IT_Columns = [
+        search.createColumn({
+          name: "internalid",
+          summary: search.Summary.GROUP,
+          label: "0. LatamReady - Internal ID",
+        }),
+        search.createColumn({
+          name: "trandate",
+          summary: search.Summary.GROUP,
+          label: "1. LatamReady - Transaction Date",
+        }),
+      ];
+
+      var IT_Search = search.create({
+        type: search.Type.TRANSACTION,
+        filters: IT_Filters,
+        columns: IT_Columns,
+      });
+
+      var searchResult = IT_Search.run();
+
+      var auxResult;
+      while (!DbolStop) {
+        auxResult = searchResult.getRange(minInterval, maxInterval);
+        if (auxResult != null) {
+          if (auxResult.length != 1000) DbolStop = true;
+          for (var i = 0; i < auxResult.length; i++) {
+            var columns = auxResult[i].columns;
+
+            var tranId = auxResult[i].getValue(columns[0]);
+            var tranDate = auxResult[i].getValue(columns[1]);
+
+            rta.push({
+              tranId: tranId,
+              tranDate: tranDate,
+            });
+          }
+          minInterval = maxInterval;
+          maxInterval = maxInterval + 1000;
+        } else {
+          DbolStop = true;
+        }
+      }
+    } catch (error) {
+      log.error("Error in _getInvoices", {
+        title: "[ MPRD - _getInvoices ]",
         message: error,
         relatedScript: LMRY_SCRIPT_NAME,
       });

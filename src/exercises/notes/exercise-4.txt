@@ -24,6 +24,8 @@ define(["N/search", "N/log"], function (search, log) {
   function _getSubsidiariesByCountry(countryCode) {
     try {
       // countryCode = AR = Argentina => For LatamReady - QA MultiBook (old)
+
+      // countryCode = "AR";
       if (!countryCode) {
         throw new Error("No se ha especificado el código del país");
       }
