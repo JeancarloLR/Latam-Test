@@ -1,6 +1,6 @@
 # EXAMEN LATAM
 
-## CONCEPTOS GENERALES (5/17)
+## CONCEPTOS GENERALES (8/17)
 
 ### 1) ¿Que se entiende por subsidiaria?
 
@@ -8,25 +8,25 @@ Se entiende por subsidiaria a una empresa que es controlada por una organizació
 
 ### 2) ¿Cuál es la finalidad de usar los campos de clasificación (Department, Class y Location)?
 
-- **Department:** Tienen como finalidad clasificar y realizar un seguimiento de los gastos de la empresa, por ejemplo: gastos de ventas, gastos de administración, gastos de producción, etc. Esto registros pueden ser de ingresos, gastos por departamento, etc. Tambien se pueden realizar en cualquier periodo de tiempo, ya sea mensual, trimestral, semestral, anual, etc.
+- **Department:** Tienen como finalidad clasificar y realizar un seguimiento de los gastos de la empresa, por ejemplo: gastos de ventas, gastos de administración, gastos de producción, etc. Esto registros pueden ser de ingresos, gastos por departamento, etc. También se pueden realizar en cualquier periodo de tiempo, ya sea mensual, trimestral, semestral, anual, etc.
 
-- **Class:** Tiene como finalidad subdividir los departamentos en si, permitiendo asi la creación de categorias, de tal forma que se puedan realizar seguimiento de cierta información como transacciones de ventas, nuevos clientes, etc. Todo esto es util para seguir de la mejor manera donde se generan los ingresos y gastos.
+- **Class:** Tiene como finalidad subdividir los departamentos en si, permitiendo así la creación de categorías, de tal forma que se puedan realizar seguimiento de cierta información como transacciones de ventas, nuevos clientes, etc. Todo esto es útil para seguir de la mejor manera donde se generan los ingresos y gastos.
 
-- **Location:** Tiene como finalidad clasificar mediante determinada ubicación, por ejemplo: manejar gastos en distintos almacenes en diversas locaciones, ademas se pueden asociar empleados a una determinada locación. Esto permite tener un seguimiento mas preciso de los gastos y de los ingresos. Permitiendo principalmente generación de informes y reportes de manera mas precisa.
+- **Location:** Tiene como finalidad clasificar mediante determinada ubicación, por ejemplo: manejar gastos en distintos almacenes en diversas locaciones, además se pueden asociar empleados a una determinada locación. Esto permite tener un seguimiento mas preciso de los gastos y de los ingresos. Permitiendo principalmente generación de informes y reportes de manera mas precisa.
 
 ### 3) ¿Cómo activar los Ids internos de los campos?
 
-1. Cursor sobre **Home** => Imagen de casita
-2. Click en **Set Preferences**
-3. Click en Subtab **General**
+1. Cursor sobre **Home** => _Icono de casita_
+2. Clic en **Set Preferences**
+3. Clic en el SubTab de **General**
 4. Revisar el apartado de **Defaults**
 5. Activar la opción de **SHOW INTERNAL IDS**
 
 ### 4) En donde se configura el formato de fechas, zona horaria e idioma
 
 1. Cursor sobre **Home** => _Icono de casita_
-2. Click en Set **Preferences**
-3. Click en Subtab **General**
+2. Clic en **Set Preferences**
+3. Clic en el SubTab de **General**
 4. Revisar el apartado de **Formatting**
 5. Configurar formato de fechas en la opción de **DATE FORMAT**
 6. Revisar el apartado de **Localization**
@@ -43,11 +43,25 @@ Se entiende por subsidiaria a una empresa que es controlada por una organizació
 
 ### 7) Que es un rol y cuál es su finalidad
 
----
+Los roles son una configuración adicional de acceso a los usuarios, los cuales permiten que los usuarios puedan tener acceso a ciertas funcionalidades de NetSuite, estos roles incluyen un grupo de permisos que pueden contemplar desde el ver y poder editar datos hasta limitar las páginas que pueden ver los usuarios, así como tareas que pueden o no completar.
 
 ### 8) ¿Es posible crear un rol en donde solo se muestre una sola pestaña? De ser afirmativa la respuesta, explique cómo se realiza dicho proceso
 
----
+Si es posible, ya que como se menciono antes se puede limitar el acceso de las páginas que el usuario puede ver.
+
+1. Cursor sobre **Setup**
+2. Cursor sobre **Users/Roles**
+3. Cursor sobre **Manage Roles**
+4. Clic en **New**
+5. Completar campos obligatorios como:
+   - **NAME:** Nombre del rol
+6. Una vez haya limitado todos los permisos, clic en **Save**
+7. Cursor sobre **Customization**
+8. Cursor sobre **Centers and Tabs**
+9. Clic en **Center Tabs**
+10. Clic sobre cualquier **Center Tab** actualmente configurado
+11. Clic en el SubTab de **Audience**
+12. Finalmente si tiene marcada la opción de **All Roles** desmarcarla y seleccionar cualquier rol menos el que se acaba de crear para así poder ocultar la pestaña
 
 ### 9) ¿Cuáles son las diferencias entre un ítem de servicio y un ítem de inventario?
 
@@ -71,7 +85,19 @@ El **Service Item** es un producto que no se vende, sino que se presta un servic
 
 ### 14) Se quiere actualizar el stock de un ítem. Cómo podría realizar ese proceso
 
----
+1. Asegurarnos de que el **Item** existe y que se encuentra activo
+2. Cursor sobre **Transactions**
+3. Cursor sobre **Inventory**
+4. Clic en **Adjust Inventory**
+5. Completar campos obligatorios como:
+   - **ADJUSTMENT ACCOUNT:** Cuenta que se usara para registrar el ajuste o actualización del stock
+   - **SUBSIDIARY:** Subsidiaria a la cual pertenece el item que se actualizara a nivel de stock
+   - **DATE:** Fecha en la cual se realizara el ajuste o actualización del stock
+6. En el SubTab de **ADJUSTMENTS** seleccionar el **ITEM** que se desea actualizar
+7. Completar campos obligatorios como:
+   - **LOCATION:** Ubicación del item que se desea actualizar
+   - **ADJUST QTY. BY:** Cantidad que se desea actualizar
+8. Clic en **Add** y luego en **Save**
 
 ### 15) Se quiere realizar un ajuste de cuentas entre dos subsidiarias, cuál es la transacción que nos permite realizar este procedimiento
 
@@ -83,7 +109,19 @@ El **Service Item** es un producto que no se vende, sino que se presta un servic
 
 ### 17) He creado un nuevo campo, el cual debe estar visible solo para el país México. Indicar cuál es el paso a paso para configurar dicho campo en el proceso Hide&View
 
----
+1. Asegurarnos de que el **Campo** existe y que se encuentra activo
+2. En el buscador de NetSuite escribir **P: LatamReady - Setup Fields View**
+3. Clic en la primera opción y luego en dar clic en **New LatamReady - Setup Fields View**
+4. Completar campos obligatorios como:
+   - **NAME:** Identificador del campo que se desea configurar
+   - **COUNTRY:** País al cual se le aplicara la configuración
+   - **SECTION:** Sección a la cual pertenece el campo(este se configuro en la creación del campo) por ejemplo: **Cust Col**, **Cust Body**, etc.
+5. Adicionalmente se debe especificar en que tipo de transacciones se desea que el campo sea visible, estas opciones están disponibles en el apartado de **Purchase Information**, **Sales Information**, **Other Information**
+6. También se puede especificar una entidad, estas opciones están disponibles en el apartado de **Sub Lists (Only Custom Record)**
+7. Una vez se haya realizado la configuración, se debe dar clic en **Save**
+8. Para que la configuración sea efectiva, se debe dar ejecutar el **Script** de **LatamReady - HideViewData SCHDL V2.0**
+9. Para ejecutar el **Schedule Script** basta con darle a editar y luego dar clic en **Save and Execute**
+10. Finalmente cuando el progreso de ejecución del **Schedule Script** sea 100%, podrá observar que el campo en cuestión ya es visible y solo para el país México
 
 ## SCRIPTS (5.5/10)
 
