@@ -35,7 +35,9 @@ Se entiende por subsidiaria a una empresa que es controlada por una organizació
 
 ### 5) En donde se puede configurar las cuentas de Costos (Cogs Account)
 
----
+Las cuentas de costo de bienes vendidos (COGS) se utilizan solo en **Inventory Items** y en **Assembly Items**. Para configurar una cuenta COGS por defencto, se debe seguir los siguientes pasos:
+
+// TODO: Pendiente pasos
 
 ### 6) ¿Qué significa que una cuenta se encuentre configurada en Item Accounting Mapping y Global Accounting Mapping, respectivamente?¿Por qué crees que se realiza este tipo de configuración? Indicar cada caso
 
@@ -123,11 +125,11 @@ El **Service Item** es un producto que no se vende, sino que se presta un servic
 9. Para ejecutar el **Schedule Script** basta con darle a editar y luego dar clic en **Save and Execute**
 10. Finalmente cuando el progreso de ejecución del **Schedule Script** sea 100%, podrá observar que el campo en cuestión ya es visible y solo para el país México
 
-## SCRIPTS (5.5/10)
+## SCRIPTS (5.5/11)
 
 ### 1) ¿Cuál es la diferencia entre define y require para la declaración de módulos? ¿Qué debo tener en consideración al momento de declarar una librería personalizada en ambos casos?
 
-La diferencia principal que tienen es la manera en que cargan los módulos cada uno. Utilizar la función require para importar módulos nativos ayuda a aumentar el rendimiento del script. Esto se logra ya que los módulos son cargados bajo demanda, es decir cuando son utilizados por primera vez. Por otro lado, la función define carga todos los módulos definidos de manera **lazy**, es decir los módulos son cargados de manera automática cuando el script es ejecutado. Para usar uno u otro es necesario tener en cuenta el tipo de modulo que se va a utilizar. Si se va a utilizar un modulo nativo, se debe utilizar la función require, de lo contrario, si se va a utilizar un modulo personalizado, se debe utilizar la función define.
+La diferencia principal que tienen es la manera en que cargan los módulos cada uno. Utilizar la función **require** para importar módulos nativos ayuda a aumentar el rendimiento del script. Esto se logra ya que los módulos son cargados bajo demanda, es decir cuando son utilizados por primera vez. Por otro lado, la función define carga todos los módulos definidos de manera **lazy**, es decir los módulos son cargados de manera automática cuando el script es ejecutado. Para usar uno u otro es necesario tener en cuenta el tipo de modulo que se va a utilizar. Si se va a utilizar un modulo nativo, se debe utilizar la función **require**, de lo contrario, si se va a utilizar un modulo personalizado, se debe utilizar la función define.
 
 ### 2) ¿En qué se diferencia un Script y un Script Deployment?
 
@@ -157,7 +159,11 @@ El modo **Testing** permite que el script se ejecute en modo de prueba, esto par
 
 ---
 
-### 8) Implementar código el cual permita crear un proveedor, cabe recalcar que la subsidiaria sólo se debe llenar siempre y cuando esté activo el feature Subsidiaries de los 'Enabled Features' de NetSuite'
+### 8) Un script de servidor (Suitelet) tiene como procedimiento final ejecutar un map/reduce, sin embargo al enviarlo seguido nos borra el siguiente error 'MAP_REDUCE_ALREADY_RUNNING', el procedimiento que se ejecuta en el map/reduce es de crear pagos de facturas de venta y enviar un correo al cliente, en la interfaz se selecciona qué facturas se van a pagar. Qué solución propone para solucionar este caso sabiendo que toda información enviada desde el suitelet debe ser ejecutada en el map/reduce
+
+---
+
+### 9) Implementar código el cual permita crear un proveedor, cabe recalcar que la subsidiaria sólo se debe llenar siempre y cuando esté activo el feature Subsidiaries de los 'Enabled Features' de NetSuite'
 
 ```javascript
 /* 
@@ -250,11 +256,11 @@ define(["N/record", "N/log", "N/runtime"], function (record, log, runtime) {
 });
 ```
 
-### 9) Implemente una función en el cual ingrese como parámetro el id de una Oportunidad, ahora a partir de esta transacción se deben crear los siguientes récords: Quote (Estimate), Sales Order, Invoice, Customer Payment. La función debe retornar un objeto con todos los ids de las transacciones creadas. (No olvide que una transacción depende de la anterior, por ejemplo el Sales order se crea a partir del Quote, el invoice a partir del sales order y así sucesivamente)
+### 10) Implemente una función en el cual ingrese como parámetro el id de una Oportunidad, ahora a partir de esta transacción se deben crear los siguientes récords: Quote (Estimate), Sales Order, Invoice, Customer Payment. La función debe retornar un objeto con todos los ids de las transacciones creadas. (No olvide que una transacción depende de la anterior, por ejemplo el Sales order se crea a partir del Quote, el invoice a partir del sales order y así sucesivamente)
 
 ---
 
-### 10) Realizar una búsqueda de las transacciones creadas en los últimos 5 días (las transacciones a considerar son: Invoice, Vendor Bill, Credit memo, Vendor Credit). Las transacciones deben estar agrupadas por subsidiaria
+### 11) Realizar una búsqueda de las transacciones creadas en los últimos 5 días (las transacciones a considerar son: Invoice, Vendor Bill, Credit memo, Vendor Credit). Las transacciones deben estar agrupadas por subsidiaria
 
 ```javascript
 /* 
@@ -444,7 +450,7 @@ define(["N/search", "N/format", "N/log"], function (search, format, log) {
 #### Records From Integration SuiteTax - Legacy
 
 - **LatamReady - Legal Ledger:** Este recordar contiene la información del nombre del reporte, a que pais pertenece, adicionalmente contiene el id del script y el deployment que se va a ejecutar para generar el reporte, este script es de tipo MPRD o SCHDL.
-- **LatamReady - Legal Template:** Este record se utiliza para definir el formato de los reportes, caracteristicas como el tipo de extensión del reporte, el tipo codificación, el tipo de formato, el uso o no de un template, etc. Este esta relacionado al **LatamReady - Legal Ledger**.
+- **LatamReady - Legal Template:** Este record se utiliza para definir el formato de los reportes, características como el tipo de extensión del reporte, el tipo codificación, el tipo de formato, el uso o no de un template, etc. Este esta relacionado al **LatamReady - Legal Ledger**.
 - **LatamReady - SuiteTax Rpt Filter:** Este record se utiliza para definir los campos que se mostraran en el Suitelet y que son necesarios para generar el reporte, este record contiene campos como el tipo de campo, el nombre del campo, el label del campo, el tipo de filtro, etc. Además esta relacionado al **LatamReady - Legal Ledger**.
 
 #### Common Records
