@@ -1,6 +1,6 @@
 # EXAMEN LATAM
 
-## CONCEPTOS GENERALES (12/17)
+## CONCEPTOS GENERALES (14/17)
 
 ### 1) ¿Que se entiende por subsidiaria?
 
@@ -80,15 +80,13 @@ Usaría un **Item** de tipo **Kit/Package Item**, esto ya que nos permite agrupa
 
 ### 11) Qué tipos de ítems nos permite utilizar montos negativos
 
----
-
 ### 12) Realizar un diagrama del flujo de venta
 
----
+![SalesFlow](./src/utils/sales-flow-exercise.png)
 
 ### 13) Realizar un diagrama del flujo de compras
 
----
+![PurchasesFlow](./src/utils/purchases-flow-exercise.png)
 
 ### 14) Se quiere actualizar el stock de un ítem. Cómo podría realizar ese proceso
 
