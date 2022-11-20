@@ -20,6 +20,8 @@ define(["N/record", "N/log", "N/runtime"], function (record, log, runtime) {
   function _createVendor(subsidiaryId) {
     try {
       // subsidiaryId = 7 = Argentina => For LatamReady - QA MultiBook (old)
+
+      // subsidiaryId = 7;
       if (!subsidiaryId) {
         throw new Error("No se ha especificado una subsidiaria");
       }

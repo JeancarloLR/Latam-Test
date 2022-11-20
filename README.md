@@ -80,6 +80,8 @@ Usaría un **Item** de tipo **Kit/Package Item**, esto ya que nos permite agrupa
 
 ### 11) Qué tipos de ítems nos permite utilizar montos negativos
 
+---
+
 ### 12) Realizar un diagrama del flujo de venta
 
 ![SalesFlow](./src/utils/sales-flow-exercise.png)
@@ -148,9 +150,9 @@ El modo **Testing** permite que el script se ejecute en modo de prueba, esto par
 
 ### 5) Describe la finalidad de los siguientes scripts Client, User Event, Custom GL PLugin
 
-- **Client Script:** Tiene como finalidad validar datos que se ingresan a nivel de usuario, tambien se puede usar este tipo de script para completar campos o sublistas, cambiar valores en base a otros, envio de aleartas. Usualmente se utilizan y van de la mano con un **Suitelet**.
+- **Client Script:** Tiene como finalidad validar datos que se ingresan a nivel de usuario, también se puede usar este tipo de script para completar campos o **SubLists**, cambiar valores en base a otros, envió de alertas. Usualmente se utilizan y van de la mano con un **Suitelet**.
 
-- **User Event Script:** Tiene como finalidad realizar validaciones personalizadas de registros, asegurar la integridad de los datos definidos por el usuario, comprobar permisos y restricciones de registros, ademas de realizar sincronización de datos en tiempo real. Estos se ejecutan del lado del servidor y usualmente se utilizan y van de la mano con **Suitelet, Scheduled Script y Portlet**.
+- **User Event Script:** Tiene como finalidad realizar validaciones personalizadas de registros, asegurar la integridad de los datos definidos por el usuario, comprobar permisos y restricciones de registros, además de realizar sincronización de datos en tiempo real. Estos se ejecutan del lado del servidor y usualmente se utilizan y van de la mano con **Suitelet, Scheduled Script y Portlet**.
 
 - **Custom GL Plugin:** Tiene como finalidad ser utilizado en **GL Impact**, también se usa facturación electrónica, este script guarda una lógica, que en caso sean para **GL Impact** puede crear líneas personalizadas, dentro de su configuración al momento de crear este tipo de script se consideran campos como:
   - **TRANSACTION TYPE:** Tipo de transacción en donde se aplicara el script
@@ -195,6 +197,8 @@ define(["N/record", "N/log", "N/runtime"], function (record, log, runtime) {
   function _createVendor(subsidiaryId) {
     try {
       // subsidiaryId = 7 = Argentina => For LatamReady - QA MultiBook (old)
+
+      // subsidiaryId = 7;
       if (!subsidiaryId) {
         throw new Error("No se ha especificado una subsidiaria");
       }
@@ -450,7 +454,7 @@ define(["N/search", "N/format", "N/log"], function (search, format, log) {
 });
 ```
 
-## REPORTES (7/7)
+## REPORTES (6/6)
 
 ### 1) Cuales son los Récords que usa todo Report Generator de cualquier reporte de cualquier país; y cuál es el uso de cada uno de ellos?
 
