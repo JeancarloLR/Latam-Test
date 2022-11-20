@@ -695,7 +695,7 @@ define(["N/search", "N/log"], function (search, log) {
 });
 ```
 
-### 6) Una búsqueda de transacción (Invoice) puede traer hasta 1.000.000 de registros por mes, al momento de intentar realizar la búsqueda para recuperar la información, esta se cae por 'tiempo de ejecución excedido'”'. Cual seria su solución para corregir este problema (Implementar código)
+### 6) Una búsqueda de transacción (Invoice) puede traer hasta 1.000.000 de registros por mes, al momento de intentar realizar la búsqueda para recuperar la información, esta se cae por 'tiempo de ejecución excedido'. Cual seria su solución para corregir este problema (Implementar código)
 
 ```javascript
 /* 
