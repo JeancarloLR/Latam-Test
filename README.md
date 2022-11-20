@@ -1,6 +1,6 @@
 # EXAMEN LATAM
 
-## CONCEPTOS GENERALES (14/17)
+## CONCEPTOS GENERALES (17/17)
 
 ### 1) ¿Que se entiende por subsidiaria?
 
@@ -80,7 +80,7 @@ Usaría un **Item** de tipo **Kit/Package Item**, esto ya que nos permite agrupa
 
 ### 11) Qué tipos de ítems nos permite utilizar montos negativos
 
----
+Los **Item** de tipo **Discount** y **Markup** nos permiten utilizar montos negativos, esto es gracias a que estos **Items** nos permiten aplicar descuentos o aumentos a los montos presentes en los **Items**.
 
 ### 12) Realizar un diagrama del flujo de venta
 
@@ -108,11 +108,15 @@ Usaría un **Item** de tipo **Kit/Package Item**, esto ya que nos permite agrupa
 
 ### 15) Se quiere realizar un ajuste de cuentas entre dos subsidiarias, cuál es la transacción que nos permite realizar este procedimiento
 
----
+La transacción que nos permite realizar este procedimiento es la **Intercompany Journal Entry**, esta nos permite realizar ajustes de cuentas entre dos subsidiarias, ya que permite registrar transacciones entre dos cuentas de diferentes subsidiarias.
 
 ### 16) Que transacciones implica una devolución de un producto
 
----
+Transacciones involucradas en una devolución de un producto:
+
+- **Credit Memo y Bill Credit:** Si se crea una factura en estado de pendiente de pago, y se desea devolver el producto, se debe crear una **Credit Memo** o **Bill Credit** para cancelar la factura y así poder devolver el producto.
+- **Return Authorization:** Si se crea una factura en estado de pagada, y se desea devolver el producto, se debe crear una autorización de devolución para cancelar la factura y así poder devolver el producto.
+- **Adjustment Inventory:** Si se desea devolver un producto defectuoso que no se vendió, se debe crear un ajuste de inventario para cancelar el producto y así poder devolver el producto.
 
 ### 17) He creado un nuevo campo, el cual debe estar visible solo para el país México. Indicar cuál es el paso a paso para configurar dicho campo en el proceso Hide&View
 
