@@ -791,11 +791,21 @@ define(["N/search", "N/log"], function (search, log) {
 });
 ```
 
-## FACTURACIÓN ELECTRÓNICA (0/3)
+## FACTURACIÓN ELECTRÓNICA (1/3)
 
 ### 1) A nivel conceptual, listar las diferencias entre el flujo Own y el flujo Estándar
 
----
+- Flujo Estándar:
+
+  - Se caracteriza por que es la facturación nativa de NetSuite, es decir, que no se requiere de ningún tipo de configuración adicional para poder facturar electrónicamente.
+  - El flujo estándar se caracteriza por que se debe realizar la facturación desde la interfaz de NetSuite, es decir, que no se puede facturar electrónicamente desde un ERP externo u otro sistema.
+  - Se usan basicamente 2 botones, estos son: **Generate E-Document** y **Send E-Document**.
+
+- Flujo Own:
+  - Este flujo es desarrollado y mantenido por LatamReady, por lo que se debe realizar una configuración adicional para poder facturar electrónicamente.
+  - Se usan otros 2 botones, estos son: **El Generate** y **El Sending**.
+  - Soporta diversos tipos de documentos electrónicos.
+  - Tiene como pasos básicos para su configuración a: **Enabled Features by Subsidiary**, **LatamReady - El Templates**, **Setup E-Invoice**, **LatamReady - El Sending Methods** y **LatamReady - El Package**.
 
 ### 2) Diferencias de los campos que tenga un ambiente Legacy y SuiteTax(Subsidiarias y Transacciones)
 
