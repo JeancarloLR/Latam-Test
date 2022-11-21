@@ -134,7 +134,7 @@ Transacciones involucradas en una devolución de un producto:
 9. Para ejecutar el **Schedule Script** basta con darle a editar y luego dar clic en **Save and Execute**
 10. Finalmente cuando el progreso de ejecución del **Schedule Script** sea 100%, podrá observar que el campo en cuestión ya es visible y solo para el país México
 
-## SCRIPTS (6/11)
+## SCRIPTS (8/11)
 
 ### 1) ¿Cuál es la diferencia entre define y require para la declaración de módulos? ¿Qué debo tener en consideración al momento de declarar una librería personalizada en ambos casos?
 
@@ -146,7 +146,7 @@ El **Script Record** es básicamente la definición de una secuencia de código 
 
 ### 3) El deployado de un script, que se aplica a una transacción, está configurado para la subsidiaria Honeycomb Inc. (Subsidiaria padre). Un usuario que pertenece a la subsidiaria Honeycomb BR (Subsidiaria hija), desea que se ejecute la lógica del script al momento de utilizar una transacción ¿Consideras que el usuario presentará algún problema al visualizar los resultados de la lógica del script?. Indicar el por qué
 
----
+No, el usuario no presentará ningún problema al visualizar los resultados de la lógica del script, ya que el deployado de un script, que se aplica a una transacción, está configurado para la subsidiaria Honeycomb Inc. (Subsidiaria padre), por lo que el usuario que pertenece a la subsidiaria Honeycomb BR (Subsidiaria hija), podrá visualizar los resultados de la lógica del script. Esto se debe a que la subsidiaria Honeycomb BR (Subsidiaria hija) hereda la configuración de la subsidiaria Honeycomb Inc. (Subsidiaria padre).
 
 ### 4) ¿Cuál es la finalidad de que un script esté configurado en modo 'Testing'?
 
@@ -170,7 +170,7 @@ El modo **Testing** permite que el script se ejecute en modo de prueba, esto par
 
 ### 7) Quieres utilizar el módulo N/file desde un script Cliente, para guardar un archivo, pero dicho módulo no se encuentra disponible para ese tipo de script. ¿Cuál sería la solución que tendrías para poder realizar dicho proceso desde el mismo Client Script?
 
----
+Para poder utilizar el módulo **N/file** desde un **Client Script** se debe utilizar el módulo **N/https** y la función **post** para poder enviar la información al **Suitelet Script** y que este a su vez guarde el archivo. Esto es posible gracias a que el **Suitelet Script** se ejecuta en el servidor y tiene acceso a todos los módulos de NetSuite.
 
 ### 8) Un script de servidor (Suitelet) tiene como procedimiento final ejecutar un map/reduce, sin embargo al enviarlo seguido nos borra el siguiente error 'MAP_REDUCE_ALREADY_RUNNING', el procedimiento que se ejecuta en el map/reduce es de crear pagos de facturas de venta y enviar un correo al cliente, en la interfaz se selecciona qué facturas se van a pagar. Qué solución propone para solucionar este caso sabiendo que toda información enviada desde el suitelet debe ser ejecutada en el map/reduce
 
